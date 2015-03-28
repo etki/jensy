@@ -1,0 +1,1 @@
+FROM intermediate/slave-base
