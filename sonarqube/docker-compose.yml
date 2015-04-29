@@ -1,0 +1,17 @@
+sonarqube:
+ build: sonarqube
+ links:
+   - "postgresql:postgresql"
+ environment:
+   SONARQUBE_JDBC_USERNAME: postgres
+   SONARQUBE_JDBC_PASSWORD: postgres
+   SONARQUBE_JDBC_URL: "jdbc:postgresql://postgresql/sonarqube"
+ ports:
+   - "127.0.0.1:9000:9000"
+postgresql:
+  build: postgresql
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+  volumes:
+    - "data/postgresql:/var/lib/postgresql"
