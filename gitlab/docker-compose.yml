@@ -1,0 +1,27 @@
+gitlab:
+  build: gitlab
+  links:
+    - "postgresql:postgresql"
+    - "redis:redis"
+  ports:
+    - "127.0.0.1:10022:22"
+    - "127.0.0.1:10080:80"
+  volumes:
+    - "data/gitlab:/home/git/data"
+  environment:
+    DB_TYPE: postgres
+    DB_USER: postgres
+    DB_PASS: postgres
+    DB_HOST: postgresql
+    REDIS_HOST: 6379
+postgresql:
+  build: postgresql
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+  volumes:
+    - "data/postgres:/var/lib/postgresql/data"
+redis:
+  build: redis
+  volumes:
+    - "data/redis:/data"
