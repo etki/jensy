@@ -1,0 +1,21 @@
+redmine:
+  build: redmine
+  links:
+    postgresql: postgresql
+  ports:
+    - "127.0.0.1:7999:80"
+  environment:
+    DB_TYPE: postgres
+    DB_HOST: postgresql
+    DB_NAME: redmine
+    DB_USER: postgres
+    DB_PASS: postgres
+  volumes:
+    data: /home/redmine/data
+postgresql:
+  build: postgresql
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+  volumes:
+    data: /var/lib/postgresql/data
