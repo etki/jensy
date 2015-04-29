@@ -1,0 +1,3 @@
+# Preventing data leaks to repository
+/data/*
+!/data/.gitkeep
